@@ -1,4 +1,4 @@
-$.getJSON("/allSongs", function(data) {
+$.getJSON("/Songs", function(data) {
     // Call our function to generate a table body
     displayResults(data);
   });
@@ -31,13 +31,14 @@ function displayResults(songs) {
 $(document).ready(function(){
 
     $('#song-sort').click(function () {
-        // console.log("test")
-        window.location.location = "http://localhost:3000/scrape";
-        return false;
+        console.log("SCRAPED")
+        window.location.href = "/scrape";
+        // return false;
     });
 
     $("#deleteDB").click(function() {
-        window.location.location = "http://localhost:3000/delete";
+        window.location.href = "/delete";
+        console.log("DB DELETED")
     })
 
 

@@ -52,15 +52,7 @@ app.get("/", function(req, res) {
 // This route will retrieve all of the data
 // from the scrapedData collection as a json (this will be populated
 // by the data you scrape using the next route)
-app.get("/allSongs", function(req, res) {
-  db.Songs.find({}, function(error, found) {
-    if (error) {
-      console.log(error);
-    } else {
-      res.json(found);
-    }
-  });
-});
+
 
 // Route 2
 // =======
@@ -72,8 +64,11 @@ app.get("/allSongs", function(req, res) {
 // push it into a MongoDB collection instead?
 
 app.get("/delete", function(req, res) {
-  db.Songs.deleteOne({})
-  res.send("DB DELETED | GO BACK TO HOME PAGE")
+  db.Songs.find({},function(error, found) {
+    res.send("DB DELETED | GO BACK TO HOME PAGE")
+    console.log( "D E L E T I N G")
+  })
+
 });
 
 
@@ -133,26 +128,27 @@ app.get("/scrape", function(req, res) {
         }
       })
       .then(function() {
-        // console.log("F I N I S H E D   S C R A P I N G")
+        console.log("F I N I S H E D   S C R A P I N G   P A G E   ");
       })
-
       .catch(function(error) {
         console.error(error);
-      });
+      })
+
   }
 
-  console.log("F I N I S H E D   S C R A P I N G");
 });
 
 app.get("/Songs", function(req, res) {
-  db.Songs.find({})
-    .then(function(found) {
-      res.json(found)
-    })
-      .catch(function(err) {
-        res.json(err)
-      })
+  db.Songs.find({}, function(error, found) {
+    if (error) {
+      console.log(error);
+    } else {
+      res.json(found);
+    }
+  });
 });
+
+
 
 app.get("/Songs/:id", function(req, res) {
   db.Songs.findOne({_id: req.params.id})
