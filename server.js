@@ -34,7 +34,7 @@ app.use(express.static("public"));
 //   console.log("Database Error:", error);
 // });
 
-var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost:27017/musighdb" ;
+var MONGODB_URI = process.env.MONGODB_URI || "mongodb://<dbuser>:<dbpassword>@ds261296.mlab.com:61296/heroku_bpk3p8fz" ;
 
 mongoose.connect(MONGODB_URI), { useNewUrlParser: true };
 
