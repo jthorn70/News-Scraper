@@ -31,11 +31,14 @@ function displayResults(songs) {
 $(document).ready(function(){
 
     $('#song-sort').click(function () {
-        console.log("test")
-        window.location.href = "http://localhost:3000/scrape";
+        // console.log("test")
+        window.location.location = "http://localhost:3000/scrape";
         return false;
     });
 
+    $("#deleteDB").click(function() {
+        window.location.location = "http://localhost:3000/delete";
+    })
 
 
 });
