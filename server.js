@@ -34,7 +34,11 @@ app.use(express.static("public"));
 //   console.log("Database Error:", error);
 // });
 
-mongoose.connect("mongodb://localhost:27017/musighdb", { useNewUrlParser: true });
+var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost:27017/musighdb";
+
+mongoose.connect(MONGODB_URI);
+
+// mongoose.connect("mongodb://localhost:27017/musighdb", { useNewUrlParser: true });
 
 // Main route (simple Hello World Message)
 app.get("/", function(req, res) {
