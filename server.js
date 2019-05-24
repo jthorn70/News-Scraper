@@ -34,7 +34,7 @@ app.use(express.static("public"));
 //   console.log("Database Error:", error);
 // });
 
-var MONGODB_URI = process.env.MONGODB_URI || "mongodb://<jeremiah>:<enter1>@ds261296.mlab.com:61296/heroku_bpk3p8fz" ;
+var MONGODB_URI = process.env.MONGODB_URI || "mongodb://jeremiah:enter1@ds261296.mlab.com:61296/heroku_bpk3p8fz" ;
 
 mongoose.connect(MONGODB_URI), { useNewUrlParser: true };
 
@@ -71,8 +71,17 @@ app.get("/allSongs", function(req, res) {
 // into an empty array in the last class. How do you
 // push it into a MongoDB collection instead?
 
+app.get("/delete", function(req, res) {
+  db.Songs.deleteOne({})
+  res.send("DB DELETED | GO BACK TO HOME PAGE")
+});
+
+
+
+
 app.get("/scrape", function(req, res) {
   console.log("S C R A P I N G");
+  res.send("SITE SCRAPED | GO BACK TO HOME PAGE")
 
   for (var i = 0; i < 15; i++) {
     axios.get("http://musigh.com/page/" + i)
