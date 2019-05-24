@@ -12,7 +12,7 @@ var exphbs = require('express-handlebars');
 
 var db = require("./models");
 
-var PORT = 3000;
+var PORT = process.env.PORT || 8080;
 
 // Initialize Express
 var app = express();
@@ -34,9 +34,9 @@ app.use(express.static("public"));
 //   console.log("Database Error:", error);
 // });
 
-var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost:27017/musighdb";
+var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost:27017/musighdb" ;
 
-mongoose.connect(MONGODB_URI);
+mongoose.connect(MONGODB_URI), { useNewUrlParser: true };
 
 // mongoose.connect("mongodb://localhost:27017/musighdb", { useNewUrlParser: true });
 
