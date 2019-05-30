@@ -34,7 +34,7 @@ app.use(express.static("public"));
 //   console.log("Database Error:", error);
 // });
 
-var MONGODB_URI = process.env.MONGODB_URI || "mongodb://jeremiah:enter1@ds261296.mlab.com:61296/heroku_bpk3p8fz" ;
+var MONGODB_URI = process.env.MONGODB_URI || "I N S E R T  Y O U R  I N F O" ;
 
 mongoose.connect(MONGODB_URI), { useNewUrlParser: true };
 
